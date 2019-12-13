@@ -5,8 +5,17 @@ const app = new Clarifai.App({
 });
 
 const apiHandler = (req,res) => {
+  const { input } = req.body;
+  // var regex = /(https?:\/\/(?:www\.|
+  // (?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|
+  // www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|
+  // https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|
+  // www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+  // if (!regex.test(input)){
+  //   return res.status(400).json('Incorrect URL submission')
+  // }
 	app.models
-    .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+    .predict(Clarifai.FACE_DETECT_MODEL, input)
     .then(data => {
       res.json(data);
     })
