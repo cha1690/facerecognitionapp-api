@@ -23,7 +23,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req,res) => {res.send(db.users) })
+app.get('/', (req,res) => {res.send('it is working') })
 app.post('/signin', (req, res) => {signin.signinHandler(req, res, bcrypt, db)})
 app.post('/register', (req, res) => {register.registerHandler(req, res, bcrypt, db)})
 app.get('/profile/:id', (req,res) => {profile.profileHandler(req, res, db)})
@@ -32,6 +32,6 @@ app.post('/imageurl', (req,res) => {image.apiHandler(req, res)})
 
 
 app.listen(process.env.PORT || 3000, () => {
-	console.log("app is running on port ${process.env.PORT}");
+	console.log('app is running on port ${process.env.PORT}');
 })
 
